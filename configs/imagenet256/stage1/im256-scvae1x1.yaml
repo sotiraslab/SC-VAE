@@ -1,0 +1,69 @@
+dataset:
+  type: imagenet
+  transforms:
+    type: imagenet256x256
+
+arch:
+  type: deepksvd-vae
+  vae:
+    num_channel: 3
+    hidden_size: 256
+    resolution: 256
+    ddconfig:
+      double_z: False
+      z_channels: 256
+      resolution: 256
+      in_channels: 3
+      out_ch: 3
+      ch: 128
+      ch_mult: [ 1,1,1,2,2,2,4,4,4 ]  # num_down = len(ch_mult)-1   #for 32 by 32 [ 1,2,2,4 ]   #for 16 by 16 [ 1,1,2,2,4 ]
+      num_res_blocks: 2
+      attn_resolutions: [ 16 ]
+      dropout: 0.0
+      loss_type: mse
+  latent:
+    embed_dim: 256
+    num_atoms: 512
+    num_soft_thresh: 16
+    num_attention_heads: 6
+    alpha: 0.5
+    beta_mincut: 1
+    latent_shape: [ 1, 1, 256 ]
+    loss_type: mse
+  alpha:
+    H_1: 64
+    H_2: 1
+
+optimizer:
+  type: adam
+  init_lr: 4.0e-5
+  weight_decay: 0.0
+  betas: [0.5, 0.9]
+  warmup:
+    epoch: 1  # 5% of total epochs
+    multiplier: 1
+    buffer_epoch: 0
+    min_lr: 4.0e-5
+    mode: fix
+
+experiment:
+  batch_size: 8
+  epochs: 10
+  test_freq: 1
+  smoke_test: False
+
+gan:
+  disc:
+    arch:
+      in_channels: 3
+      num_layers: 2
+      use_actnorm: False
+      ndf: 64
+      spectral_norm: False
+
+  loss:
+    disc_loss: hinge
+    gen_loss: vanilla
+    disc_weight: 0.75
+    perceptual_weight: 1.0
+    disc_start: 0
