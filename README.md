@@ -9,3 +9,11 @@ This repository contains official implementation for the paper titled "SC-VAE: S
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;year={2023}    
 }
 
+# To-Do List
+- [ ] Installing Dependencies
+- [ ] Training the Model
+- [ ] Evaluating the Model
+- [ ] Upload Pre-trained SC-VAEs
+
+
+
