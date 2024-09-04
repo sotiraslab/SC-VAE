@@ -11,8 +11,10 @@ parser.add_argument('--model-config', type=str, default='./configs/ffhq/stage1/f
 ```
 
 # Evaluating the Model
-## Reconstruction
-
+## Image Reconstruction
+## Image Generation
+## Image Pathches Clustering
+## Unsupervised  Image Segmentation
 
 # Citation
 @article{xiao2023sc,    
@@ -25,5 +27,5 @@ parser.add_argument('--model-config', type=str, default='./configs/ffhq/stage1/f
 # To-Do List
 - [x] Installing Dependencies
 - [x] Training the Model
-- [ ] Evaluating the Model: reconstuction; image generation; image patches clustering; unsupervised image segmentaton. 
 - [ ] Upload Pre-trained SC-VAEs
+- [ ] Evaluating the Model: reconstuction; image generation; image patches clustering; unsupervised image segmentaton. 
